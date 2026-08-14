@@ -11,8 +11,7 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// Catatan: Gunakan gemini-2.5-flash jika gemini-3.6 belum tersedia publik
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.6-flash';
 
 app.use(express.json());
 app.use(cors());
