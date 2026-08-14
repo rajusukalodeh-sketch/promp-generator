@@ -70,8 +70,7 @@ function outputTypeLabel(t) {
 /* ---------------------------------------------------------
    SYSTEM RULES (condensed from master system prompt)
    Dibuat sebagai fungsi karena isinya berubah sesuai outputType
-   ("both" / "image" / "video") — lihat OUTPUT-MODE-SPEC.md untuk
-   penjelasan lengkap kenapa 3 mode ini dipisah.
+   ("both" / "image" / "video").
 --------------------------------------------------------- */
 function getRulesPlanning(outputType) {
   const modeNote =
@@ -679,7 +678,7 @@ function step3() {
     row.appendChild(
       selectField(
         "Platform Image Generator",
-        ["Gemini AI","Midjourney v6/v7", "Flux", "SDXL", "DALL-E 3"],
+        ["Gemini AI", "Midjourney v6/v7", "Flux", "SDXL", "DALL-E 3"],
         state.imgPlatform,
         (v) => (state.imgPlatform = v),
       ),
