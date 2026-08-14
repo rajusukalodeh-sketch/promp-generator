@@ -14,13 +14,6 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 // Catatan: Gunakan gemini-2.5-flash jika gemini-3.6 belum tersedia publik
 const GEMINI_MODEL = 'gemini-2.5-flash';
 
-console.log({
-    hasGeminiKey: !!process.env.GEMINI_API_KEY,
-    keyLength: process.env.GEMINI_API_KEY?.length,
-    nodeEnv: process.env.NODE_ENV,
-    vercel: process.env.VERCEL
-});
-
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
