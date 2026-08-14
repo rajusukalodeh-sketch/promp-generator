@@ -43,8 +43,6 @@ app.post('/api/chat', async (req, res) => {
     }
 });
 
-console.log(process.env.GEMINI_API_KEY);
-
 
 // 1. HANYA JALANKAN LISTEN DI LOKAL (BUKAN DI VERCEL)
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
