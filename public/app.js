@@ -690,11 +690,11 @@ function step3() {
       selectField(
         "Platform Video Generator",
         [
+          "Google Veo",
           "Kling AI",
           "Runway Gen-3/4",
           "Pika",
           "Luma Dream Machine",
-          "Google Veo",
         ],
         state.vidPlatform,
         (v) => (state.vidPlatform = v),
