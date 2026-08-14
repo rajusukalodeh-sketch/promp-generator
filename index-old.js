@@ -10,13 +10,14 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-
-// Catatan: Gunakan gemini-2.5-flash jika gemini-3.6 belum tersedia publik
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = 'gemini-3.6-flash';
 
 app.use(express.json());
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const PORT = 3000;
+app.listen(PORT, () => console.log(`Server ready on http://localhost:${PORT}`));
 
 app.post('/api/chat', async (req, res) => {
     const { conversation } = req.body;
@@ -27,7 +28,6 @@ app.post('/api/chat', async (req, res) => {
             role,
             parts: [{ text }]
         }));
-
         const response = await ai.models.generateContent({
             model: GEMINI_MODEL,
             contents,
@@ -36,18 +36,8 @@ app.post('/api/chat', async (req, res) => {
                 systemInstruction: 'berikan jawaban yang tidak ambigu dan bisa dimengerti dengan sangat baik oleh model AI video generator',
             }
         });
-
-        res.status(200).json({ result: response.text });
+        res.status(200).json({ result: response.text })
     } catch (e) {
-        res.status(500).json({ message: e.message });
+        res.status(500).json({ message: e.message })
     }
 });
-
-// 1. HANYA JALANKAN LISTEN DI LOKAL (BUKAN DI VERCEL)
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-    const PORT = process.env.PORT || 3000;
-    app.listen(PORT, () => console.log(`Server ready on http://localhost:${PORT}`));
-}
-
-// 2. WAJIB EXPORT APP UNTUK VERCEL
-export default app;
