@@ -23,8 +23,8 @@ const state = {
   weather: "",
   visualStyle: "",
   visualRef: "",
-  imgPlatform: "Flux",
-  vidPlatform: "Kling AI",
+  imgPlatform: "GEMINI AI",
+  vidPlatform: "Google FLow VEO 3",
   aspectRatio: "9:16",
   cameraStyle: "",
   lens: "",
@@ -679,7 +679,7 @@ function step3() {
     row.appendChild(
       selectField(
         "Platform Image Generator",
-        ["Midjourney v6/v7", "Flux", "SDXL", "DALL-E 3"],
+        ["Gemini AI","Midjourney v6/v7", "Flux", "SDXL", "DALL-E 3"],
         state.imgPlatform,
         (v) => (state.imgPlatform = v),
       ),
